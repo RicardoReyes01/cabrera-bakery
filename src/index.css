@@ -33,7 +33,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 
 .container {
-  max-width: 1100px;
+  max-width: 68.75rem;
   margin: 0 auto;
   padding: 1.5rem 1rem;
 }
@@ -217,6 +217,7 @@ h2 { font-size: 1.75rem; margin: 0 0 1rem; }
 
 /* Tablet */
 @media (min-width: 768px) {
+  html {font-size: 120%;}
   .container { padding: 2.5rem 2rem; }
   .header { padding: 1rem 2rem; }
   .nav { display: flex; gap: 1.5rem; }
