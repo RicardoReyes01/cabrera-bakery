@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400..700;1,400..700&display=swap');
+
+:root {
+  --bg: #fff7ec;
+  --text: #3d2a20;
+  --accent: #c8553d;
+  --card: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.slider { position: relative; width: 100%; height: 100%; }
+
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.slide.active { opacity: 1; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
+h2 { font-size: 1.75rem; margin: 0 0 1rem; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+}
+.btn-outline { background: transparent; color: var(--accent); }
+.btn-small { padding: 0.5rem 1rem; }
+
+/* Header: phone */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--bg);
+  border-bottom: 1px solid #eadfce;
+}
+.logo { 
+  align-self: center;
+  font-family: "Libre Bodoni"; 
+  font-weight: 600; 
+  font-size: 1.8rem; 
+  color: var(--text); 
+  text-decoration: none; 
+}
+.nav { display: none; }
+
+/* Hero: phone */
+.hero { display: flex; flex-direction: column; gap: 1.5rem; }
+.hero-preheader{text-align: center; margin-top: 0%; font-size: small;}
+.hero-header{text-align: center; font-weight: 1100;}
+.hero-p{text-align: center; font-size:medium; margin-top: 2rem;}
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 2rem;}
+.hero-image { background: #eadfce; border-radius: 12px; overflow: hidden; aspect-ratio: 4 / 3; }
+.hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-down {
+  animation: slide-down 1s ease-out both;
+}
+
+/* Products: phone */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+.product-card { background: var(--card); border-radius: 12px; overflow: hidden; }
+.product-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: #eadfce; }
+.product-card h3 { margin: 0; padding: 0.75rem; font-size: 1.2rem; text-align: center;}
+
+.about { background: #f7ebd8; margin-top: 3rem;}
+.about-grid { display: grid; gap: 1.5rem; }
+.about-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #eadfce;
+}
+.about-text p { margin: 0 0 1rem; }
+.about-signoff { font-style: italic; font-weight: 600; }
+
+.visit-grid { display: grid; gap: 1.5rem; }
+.visit-grid p {text-align: center;}
+.visit iframe { width: 100%; height: 300px; border: 0; border-radius: 12px; }
+.hours { list-style: none; padding: 0; }
+.hours li { display: flex; justify-content: space-between; padding: 0.4rem 0; border-bottom: 1px solid #eadfce; }
+
+.reveal-top {
+  opacity: 0;
+  transform: translateY(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-top {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.7s ease-out, transform 1s ease-out;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-left { opacity: 1; transform: none; transition: none; }
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.7s ease-out, transform 1s ease-out;
+}
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-right { opacity: 1; transform: none; transition: none; }
+}
+
+.footer {
+  background: #f7ebd8;
+  color: var(--text);
+  margin-top: 2rem;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.footer a {color: var(--text); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+.footer p { margin: 0 0 0.4rem; }
+
+.footer-grid {
+  display: grid;
+  gap: 1.5rem;
+  text-align: center;
+}
+.footer-logo { font-weight: 800; font-size: 1.2rem; font-family: "Libre Bodoni"; }
+
+.footer-links,
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.footer-social svg {
+  font-size: 2.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(246, 236, 220, 0.2);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .container { padding: 2.5rem 2rem; }
+  .header { padding: 1rem 2rem; }
+  .nav { display: flex; gap: 1.5rem; }
+  .nav a { color: var(--text); text-decoration: none; font-weight: 500; }
+  .product-grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .about-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 2.5rem; }
+  .visit-grid { grid-template-columns: 1fr 1fr; }
+  .visit iframe { height: 100%; min-height: 350px; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); text-align: left; }
+  .footer-bottom { display: flex; justify-content: space-between; padding: 1rem 2rem;}
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .hero { flex-direction: row; align-items: center; gap: 3rem; }
+  .hero > * { flex: 1; }
+  .product-card img { transition: transform 0.3s; }
+  .product-card:hover img { transform: scale(1.04); }
+}
